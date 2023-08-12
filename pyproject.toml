@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "pagecraft"
+version = "0.0.3"
+authors = [
+  {name="Raul Cobiellas",email="raulodev@gmail.com"},
+]
+description = "Paquete poderoso y fácil de usar que simplifica la creación de paginación en tus aplicaciones"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/raulodev/pagecraft"
+"Bug Tracker" = "https://github.com/raulodev/pagecraft/issues"

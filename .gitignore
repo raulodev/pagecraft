@@ -1,0 +1,6 @@
+.venv
+dist
+tests
+test.py
+*.sh
+*.pyc
