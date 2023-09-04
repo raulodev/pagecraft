@@ -2,6 +2,11 @@
 
 Paquete python poderoso y fácil de usar que simplifica la creación de paginación en tus aplicaciones
 
+[![Downloads](https://static.pepy.tech/badge/pagecraft)](https://pepy.tech/project/pagecraft)
+[![PyPI version](https://badge.fury.io/py/pagecraft.svg)](https://badge.fury.io/py/pagecraft)
+![Repo Size](https://img.shields.io/github/repo-size/raulodev/pagecraft)
+![PyPI - License](https://img.shields.io/pypi/l/pagecraft)
+
 ## Instalando
 
 ```console
@@ -53,13 +58,22 @@ Al imprimir el objeto `page` obtendremos algo como esto
 ## Acceder a los datos:
 
 ```python
-# obtener el contenido de la página
+# Obtener el contenido de la página
 page.data
-# devuelve True o False si posee página siguiente
+
+# Devuelve True o False si posee página siguiente
 page.has_next_page
-# devuelve True o False si posee página anterior
+
+# Obtener el número de la página siguiente
+page.next_page
+
+# Devuelve True o False si posee página anterior
 page.has_prev_page
-# obtener el número de la página actual
+
+# Obtener el número de la página anterior
+page.prev_page
+
+# Obtener el número de la página actual
 page.number
 ```
 

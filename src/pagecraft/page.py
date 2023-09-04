@@ -5,7 +5,7 @@ class Page:
     def __init__(
         self,
         number: int = None,
-        data: list = None,
+        data: list = [],
         next_page: int = None,
         prev_page: int = None,
     ):
