@@ -1,13 +1,13 @@
 # pagecraft
 
-Paquete python poderoso y fácil de usar que simplifica la creación de paginación en tus aplicaciones
+Powerful package and easy to use that simplifies the creation of pagination in your apps
 
 [![Downloads](https://static.pepy.tech/badge/pagecraft)](https://pepy.tech/project/pagecraft)
 [![PyPI version](https://badge.fury.io/py/pagecraft.svg)](https://badge.fury.io/py/pagecraft)
 ![Repo Size](https://img.shields.io/github/repo-size/raulodev/pagecraft)
 ![PyPI - License](https://img.shields.io/pypi/l/pagecraft)
 
-## Instalando
+## Installing
 
 ```console
 pip install pagecraft
@@ -18,7 +18,6 @@ pip install pagecraft
 ```python
 from pagecraft import PageCraft
 
-# crear u obtener una lista de objectos.
 lista_de_objetos = [
     "Automatización Eficiente con Python",
     "Explorando las Profundidades de Python",
@@ -29,14 +28,14 @@ lista_de_objetos = [
     "Python y la Internet de las Cosas (IoT)",
 ]
 
-# crear una instacia pasando la lista como argumento.
+
 pgcraft = PageCraft(lista_de_objetos)
 
-# Obtener la primera página.
+# Get first page
 page = pgcraft.page(1)
 ```
 
-Al imprimir el objeto `page` obtendremos algo como esto
+when we print the `page` we get this
 
 ```console
 {
@@ -55,35 +54,31 @@ Al imprimir el objeto `page` obtendremos algo como esto
 }
 ```
 
-## Acceder a los datos:
+## Accessing data:
 
 ```python
-# Obtener el contenido de la página
+# Get data from page
 page.data
 
-# Devuelve True o False si posee página siguiente
+# True or False if next page exists
 page.has_next_page
 
-# Obtener el número de la página siguiente
+# Get the next page number
 page.next_page
 
-# Devuelve True o False si posee página anterior
+# True or False if prev page exists
 page.has_prev_page
 
-# Obtener el número de la página anterior
+# Get the prev page number
 page.prev_page
 
-# Obtener el número de la página actual
+# Get the current page number
 page.number
 ```
 
-## Ampliando la cantidad de datos devueltos
+## Extend the data returned
 
 ```python
-# pasar un número entero como segundo argumento
-# al instanciar la clase
-pgcraft = PageCraft(lista_de_objetos,10)
-
-page = pgcraft.page(1)
-# El page.data contendrá una lista de hasta 10 elementos
+# set integer number as second argument
+pgcraft = PageCraft(lista_de_objetos,20)
 ```

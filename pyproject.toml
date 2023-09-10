@@ -3,11 +3,11 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 [project]
 name = "pagecraft"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   {name="Raul Cobiellas",email="raulodev@gmail.com"},
 ]
-description = "Paquete poderoso y fácil de usar que simplifica la creación de paginación en tus aplicaciones"
+description = "Powerful package and easy to use that simplifies the creation of pagination in your apps"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [

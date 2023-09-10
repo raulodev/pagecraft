@@ -47,12 +47,12 @@ class Page:
 
     @is_exist.setter
     def is_exist(self):
-        raise ValueError("No se puede establecer un nuevo valor")
+        raise ValueError("Cannot set a new value.")
 
     @has_next_page.setter
     def has_next_page(self):
-        raise ValueError("No se puede establecer un nuevo valor")
+        raise ValueError("Cannot set a new value.")
 
     @has_prev_page.setter
     def has_prev_page(self):
-        raise ValueError("No se puede establecer un nuevo valor")
+        raise ValueError("Cannot set a new value.")

@@ -5,71 +5,67 @@ from .page import Page
 class PageCraft:
     def __init__(
         self,
-        object_list: list,
+        list_objects: list,
         items: int = 5,
     ):
-        """Constructor para crear la paginación
-
-        Args:
-            object_list (list): Una lista de objetos
-            items (int, optional): cantidad de elementos que debe devolver al llamar
-            a la método page por defecto es 5.
         """
-        self.object_list = object_list
+        Args:
+            list_objects (list)
+            items (int, optional): Amount of data returned in page.data. Defaults to 5.
+        """
+        self.list_objects = list_objects
         self.items = items
         self.number = None
         self.list_pages = self.__create_pages()
 
     def page(self, number: int) -> Page:
-        """Retorna una página
+        """Return the page
 
         Args:
-            number (int): número de la página ha obtener
+            number (int): page number to get
         """
         if not isinstance(number, int):
-            raise ValueError("El argumento debe ser de tipo entero")
+            raise TypeError("Argument number must be integer type.")
 
         if number > self.total_pages or number <= 0:
             return Page()
 
-        self.number = number - 1
+        self.number = number
 
         return Page(
-            number=self.number + 1,
-            data=self.list_pages[self.number],
-            next_page=self.number + 2 if self.__has_next else None,
-            prev_page=self.number if self.__has_prev else None,
+            number=self.number,
+            data=self.list_pages[self.number - 1],
+            next_page=self.number + 1 if self.__has_next else None,
+            prev_page=self.number - 1 if self.__has_prev else None,
         )
 
     @property
     def total_objects(self) -> int:
-        """Retorna el número de objetos en total"""
-        return len(self.object_list)
+        return len(self.list_objects)
 
     @property
     def total_pages(self) -> int:
-        "Retorna la cantidad de páginas en total"
         return ceil(self.total_objects / self.items)
 
     def __create_pages(self):
         pages = []
         for i in range(0, self.total_objects, self.items):
-            page = self.object_list[i : i + self.items]
+            page = self.list_objects[i : i + self.items]
             pages.append(page)
         return pages
 
     @property
     def __has_next(self):
-        return self.number in range(self.total_pages - 1)
+        return self.number in range(self.total_pages)
 
     @property
     def __has_prev(self):
-        return self.number - 1 in range(self.total_pages)
+        return self.number - 2 in range(self.total_pages)
 
     @total_pages.setter
     def total_pages(self):
-        raise ValueError("No se puede establecer un nuevo valor")
+        raise ValueError("Cannot set a new value")
 
     @total_objects.setter
     def total_objects(self):
-        raise ValueError("No se puede establecer un nuevo valor")
+        raise ValueError("Cannot set a new value")
