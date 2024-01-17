@@ -1,7 +1,8 @@
 import json
+from .base import PageBase
 
 
-class Page:
+class Page(PageBase):
     def __init__(
         self,
         number: int = None,

@@ -13,7 +13,7 @@ Powerful package and easy to use that simplifies the creation of pagination in y
 pip install pagecraft
 ```
 
-## Tutorial <a name = "usage"></a>
+## Tutorial
 
 ```python
 from pagecraft import PageCraft
@@ -35,24 +35,46 @@ pgcraft = PageCraft(lista_de_objetos)
 page = pgcraft.page(1)
 ```
 
-when we print the `page` we get this
+## PageCraftAlchemy Tutorial
 
-```console
-{
-    "_": "Page",
-    "number": 1,
-    "data": [
-        "Automatizaci\u00f3n Eficiente con Python",
-        "Explorando las Profundidades de Python",
-        "Desarrollo Web Moderno con Python y Flask",
-        "Introducci\u00f3n a la Ciencia de Datos con Python",
-        "Creando Aplicaciones de Escritorio con Python y PyQt"
-    ],
-    "next_page": 2,
-    "prev_page": null,
-    "is_exist": true
-}
+```python
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker, declarative_base
+
+from pagecraft.alchemy import PageCraftAlchemy
+
+Base = declarative_base()
+
+class Frases(Base):
+    __tablename__ = "frases"
+    id = Column(Integer, primary_key=True)
+    texto = Column(String)
+
+    def __str__(self):
+        return self.texto
+
+engine = create_engine("sqlite:///:memory:")
+
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+for i in range(1, 21):
+    frase = Frases(texto=f"Frase {i}")
+    session.add(frase)
+
+session.commit()
+
+query = session.query(Frases)
+
+alchemycraft = PageCraftAlchemy(query)
+
+# Get first page
+page = alchemycraft.page(1)
 ```
+
+
 
 ## Accessing data:
 
@@ -80,5 +102,13 @@ page.number
 
 ```python
 # set integer number as second argument
+
 pgcraft = PageCraft(lista_de_objetos,20)
+
+alchemycraft = PageCraftAlchemy(query , 20)
 ```
+
+## Release Notes (0.0.6)
+
+- add PageCraftAlchemy : create easy pagination for [Sqlalchemy ORM](https://docs.sqlalchemy.org/en/20/orm/quickstart.html)
+- now there are 10 items returned by default

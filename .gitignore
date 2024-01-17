@@ -1,4 +1,6 @@
 .venv
 dist
+test.py
 *.sh
 *.pyc
+__pycache__

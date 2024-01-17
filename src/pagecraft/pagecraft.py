@@ -1,12 +1,13 @@
 from math import ceil
+from .base import PageCraftBase
 from .page import Page
 
 
-class PageCraft:
+class PageCraft(PageCraftBase):
     def __init__(
         self,
         list_objects: list,
-        items: int = 5,
+        items: int = 10,
     ):
         """
         Args:
@@ -32,9 +33,11 @@ class PageCraft:
 
         self.number = number
 
+        self._data = self.list_pages[self.number - 1]
+
         return Page(
             number=self.number,
-            data=self.list_pages[self.number - 1],
+            data=self._data,
             next_page=self.number + 1 if self.__has_next else None,
             prev_page=self.number - 1 if self.__has_prev else None,
         )
@@ -60,7 +63,7 @@ class PageCraft:
 
     @property
     def __has_prev(self):
-        return self.number - 2 in range(self.total_pages)
+        return self.number > 1
 
     @total_pages.setter
     def total_pages(self):
